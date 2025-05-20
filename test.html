@@ -1,0 +1,311 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>حاسبة المعدل السنوي</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+  <script>
+    tailwind.config = {
+      theme: {
+        extend: {
+          colors: {
+            primary: {
+              50: '#f0f9ff',
+              100: '#e0f2fe',
+              200: '#bae6fd',
+              300: '#7dd3fc',
+              400: '#38bdf8',
+              500: '#0ea5e9',
+              600: '#0284c7',
+              700: '#0369a1',
+              800: '#075985',
+              900: '#0c4a6e',
+            },
+            secondary: {
+              50: '#f5f3ff',
+              100: '#ede9fe',
+              200: '#ddd6fe',
+              300: '#c4b5fd',
+              400: '#a78bfa',
+              500: '#8b5cf6',
+              600: '#7c3aed',
+              700: '#6d28d9',
+              800: '#5b21b6',
+              900: '#4c1d95',
+            }
+          },
+          fontFamily: {
+            sans: ['Tajawal', 'Arial', 'sans-serif']
+          }
+        }
+      }
+    }
+  </script>
+  <link href="https://fonts.googleapis.com/css2?family=Tajawal:wght@400;500;700&display=swap" rel="stylesheet">
+</head>
+<body class="bg-gray-50 font-sans min-h-screen">
+  <div class="container mx-auto px-4 py-8 max-w-4xl">
+    <header class="mb-8 text-center">
+      <h1 class="text-3xl font-bold text-primary-700 mb-2">حاسبة المعدل السنوي</h1>
+      <p class="text-gray-600">أدخل درجاتك لحساب المعدل الفصلي والسنوي</p>
+    </header>
+
+    <main class="bg-white rounded-xl shadow-md overflow-hidden">
+      <form id="gradesForm" class="p-6">
+        <!-- Semester 1 -->
+        <div class="mb-10">
+          <div class="flex items-center gap-2 mb-4">
+            <div class="bg-primary-100 p-2 rounded-lg text-primary-700">
+              <i class="fas fa-book text-xl"></i>
+            </div>
+            <h2 class="text-xl font-bold text-gray-800">الفصل الأول</h2>
+          </div>
+          
+          <div class="overflow-x-auto">
+            <table class="w-full border-collapse">
+              <thead>
+                <tr class="bg-primary-50 text-primary-800">
+                  <th class="p-3 text-right font-semibold">المادة</th>
+                  <th class="p-3 text-center font-semibold">المعامل</th>
+                  <th class="p-3 text-center font-semibold">أعمال موجهة</th>
+                  <th class="p-3 text-center font-semibold">الامتحان</th>
+                </tr>
+              </thead>
+              <tbody class="divide-y divide-gray-200">
+                <tr class="hover:bg-gray-50">
+                  <td class="p-3 text-right font-medium">هندسة الحاسوب</td>
+                  <td class="p-3 text-center">5</td>
+                  <td class="p-3 text-center"><input type="number" name="archi_td" class="w-16 p-2 border border-gray-300 rounded focus:ring-2 focus:ring-primary-500 focus:border-primary-500"></td>
+                  <td class="p-3 text-center"><input type="number" name="archi_exam" class="w-16 p-2 border border-gray-300 rounded focus:ring-2 focus:ring-primary-500 focus:border-primary-500"></td>
+                </tr>
+                <tr class="hover:bg-gray-50">
+                  <td class="p-3 text-right font-medium">البرمجة كائنية التوجه</td>
+                  <td class="p-3 text-center">5</td>
+                  <td class="p-3 text-center"><input type="number" name="oop_td" class="w-16 p-2 border border-gray-300 rounded focus:ring-2 focus:ring-primary-500 focus:border-primary-500"></td>
+                  <td class="p-3 text-center"><input type="number" name="oop_exam" class="w-16 p-2 border border-gray-300 rounded focus:ring-2 focus:ring-primary-500 focus:border-primary-500"></td>
+                </tr>
+                <tr class="hover:bg-gray-50">
+                  <td class="p-3 text-right font-medium">هيكلة المعطيات</td>
+                  <td class="p-3 text-center">5</td>
+                  <td class="p-3 text-center"><input type="number" name="file_td" class="w-16 p-2 border border-gray-300 rounded focus:ring-2 focus:ring-primary-500 focus:border-primary-500"></td>
+                  <td class="p-3 text-center"><input type="number" name="file_exam" class="w-16 p-2 border border-gray-300 rounded focus:ring-2 focus:ring-primary-500 focus:border-primary-500"></td>
+                </tr>
+                <tr class="hover:bg-gray-50">
+                  <td class="p-3 text-right font-medium">الجبر</td>
+                  <td class="p-3 text-center">4</td>
+                  <td class="p-3 text-center"><input type="number" name="algebra_td" class="w-16 p-2 border border-gray-300 rounded focus:ring-2 focus:ring-primary-500 focus:border-primary-500"></td>
+                  <td class="p-3 text-center"><input type="number" name="algebra_exam" class="w-16 p-2 border border-gray-300 rounded focus:ring-2 focus:ring-primary-500 focus:border-primary-500"></td>
+                </tr>
+                <tr class="hover:bg-gray-50">
+                  <td class="p-3 text-right font-medium">التحليل</td>
+                  <td class="p-3 text-center">4</td>
+                  <td class="p-3 text-center"><input type="number" name="analysis_td" class="w-16 p-2 border border-gray-300 rounded focus:ring-2 focus:ring-primary-500 focus:border-primary-500"></td>
+                  <td class="p-3 text-center"><input type="number" name="analysis_exam" class="w-16 p-2 border border-gray-300 rounded focus:ring-2 focus:ring-primary-500 focus:border-primary-500"></td>
+                </tr>
+                <tr class="hover:bg-gray-50">
+                  <td class="p-3 text-right font-medium">الخوارزميات</td>
+                  <td class="p-3 text-center">4</td>
+                  <td class="p-3 text-center"><input type="number" name="algo_td" class="w-16 p-2 border border-gray-300 rounded focus:ring-2 focus:ring-primary-500 focus:border-primary-500"></td>
+                  <td class="p-3 text-center"><input type="number" name="algo_exam" class="w-16 p-2 border border-gray-300 rounded focus:ring-2 focus:ring-primary-500 focus:border-primary-500"></td>
+                </tr>
+                <tr class="hover:bg-gray-50">
+                  <td class="p-3 text-right font-medium">الإحصاء والاحتمالات</td>
+                  <td class="p-3 text-center">2</td>
+                  <td class="p-3 text-center"><input type="number" name="proba_td" class="w-16 p-2 border border-gray-300 rounded focus:ring-2 focus:ring-primary-500 focus:border-primary-500"></td>
+                  <td class="p-3 text-center"><input type="number" name="proba_exam" class="w-16 p-2 border border-gray-300 rounded focus:ring-2 focus:ring-primary-500 focus:border-primary-500"></td>
+                </tr>
+                <tr class="hover:bg-gray-50">
+                  <td class="p-3 text-right font-medium">ريادة الأعمال</td>
+                  <td class="p-3 text-center">1</td>
+                  <td class="p-3 text-center" colspan="2"><input type="number" name="entrep" class="w-16 p-2 border border-gray-300 rounded focus:ring-2 focus:ring-primary-500 focus:border-primary-500"></td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+        </div>
+
+        <!-- Semester 2 -->
+        <div class="mb-10">
+          <div class="flex items-center gap-2 mb-4">
+            <div class="bg-secondary-100 p-2 rounded-lg text-secondary-700">
+              <i class="fas fa-book-open text-xl"></i>
+            </div>
+            <h2 class="text-xl font-bold text-gray-800">الفصل الثاني</h2>
+          </div>
+          
+          <div class="overflow-x-auto">
+            <table class="w-full border-collapse">
+              <thead>
+                <tr class="bg-secondary-50 text-secondary-800">
+                  <th class="p-3 text-right font-semibold">المادة</th>
+                  <th class="p-3 text-center font-semibold">المعامل</th>
+                  <th class="p-3 text-center font-semibold">أعمال موجهة</th>
+                  <th class="p-3 text-center font-semibold">الامتحان</th>
+                </tr>
+              </thead>
+              <tbody class="divide-y divide-gray-200">
+                <tr class="hover:bg-gray-50">
+                  <td class="p-3 text-right font-medium">الإنجليزية</td>
+                  <td class="p-3 text-center">1</td>
+                  <td class="p-3 text-center" colspan="2"><input type="number" name="english" class="w-16 p-2 border border-gray-300 rounded focus:ring-2 focus:ring-secondary-500 focus:border-secondary-500"></td>
+                </tr>
+                <tr class="hover:bg-gray-50">
+                  <td class="p-3 text-right font-medium">البرمجة كائنية التوجه 2</td>
+                  <td class="p-3 text-center">6</td>
+                  <td class="p-3 text-center"><input type="number" name="oop2_td" class="w-16 p-2 border border-gray-300 rounded focus:ring-2 focus:ring-secondary-500 focus:border-secondary-500"></td>
+                  <td class="p-3 text-center"><input type="number" name="oop2_exam" class="w-16 p-2 border border-gray-300 rounded focus:ring-2 focus:ring-secondary-500 focus:border-secondary-500"></td>
+                </tr>
+                <tr class="hover:bg-gray-50">
+                  <td class="p-3 text-right font-medium">نظم المعلومات</td>
+                  <td class="p-3 text-center">3</td>
+                  <td class="p-3 text-center"><input type="number" name="infosys_td" class="w-16 p-2 border border-gray-300 rounded focus:ring-2 focus:ring-secondary-500 focus:border-secondary-500"></td>
+                  <td class="p-3 text-center"><input type="number" name="infosys_exam" class="w-16 p-2 border border-gray-300 rounded focus:ring-2 focus:ring-secondary-500 focus:border-secondary-500"></td>
+                </tr>
+                <tr class="hover:bg-gray-50">
+                  <td class="p-3 text-right font-medium">شبكات الحاسوب</td>
+                  <td class="p-3 text-center">4</td>
+                  <td class="p-3 text-center"><input type="number" name="net_td" class="w-16 p-2 border border-gray-300 rounded focus:ring-2 focus:ring-secondary-500 focus:border-secondary-500"></td>
+                  <td class="p-3 text-center"><input type="number" name="net_exam" class="w-16 p-2 border border-gray-300 rounded focus:ring-2 focus:ring-secondary-500 focus:border-secondary-500"></td>
+                </tr>
+                <tr class="hover:bg-gray-50">
+                  <td class="p-3 text-right font-medium">قواعد البيانات</td>
+                  <td class="p-3 text-center">3</td>
+                  <td class="p-3 text-center"><input type="number" name="db_td" class="w-16 p-2 border border-gray-300 rounded focus:ring-2 focus:ring-secondary-500 focus:border-secondary-500"></td>
+                  <td class="p-3 text-center"><input type="number" name="db_exam" class="w-16 p-2 border border-gray-300 rounded focus:ring-2 focus:ring-secondary-500 focus:border-secondary-500"></td>
+                </tr>
+                <tr class="hover:bg-gray-50">
+                  <td class="p-3 text-right font-medium">نظرية اللغات</td>
+                  <td class="p-3 text-center">3</td>
+                  <td class="p-3 text-center"><input type="number" name="lt_td" class="w-16 p-2 border border-gray-300 rounded focus:ring-2 focus:ring-secondary-500 focus:border-secondary-500"></td>
+                  <td class="p-3 text-center"><input type="number" name="lt_exam" class="w-16 p-2 border border-gray-300 rounded focus:ring-2 focus:ring-secondary-500 focus:border-secondary-500"></td>
+                </tr>
+                <tr class="hover:bg-gray-50">
+                  <td class="p-3 text-right font-medium">نظرية المخططات</td>
+                  <td class="p-3 text-center">3</td>
+                  <td class="p-3 text-center"><input type="number" name="gt_td" class="w-16 p-2 border border-gray-300 rounded focus:ring-2 focus:ring-secondary-500 focus:border-secondary-500"></td>
+                  <td class="p-3 text-center"><input type="number" name="gt_exam" class="w-16 p-2 border border-gray-300 rounded focus:ring-2 focus:ring-secondary-500 focus:border-secondary-500"></td>
+                </tr>
+                <tr class="hover:bg-gray-50">
+                  <td class="p-3 text-right font-medium">المشروع</td>
+                  <td class="p-3 text-center">6</td>
+                  <td class="p-3 text-center" colspan="2"><input type="number" name="project" class="w-16 p-2 border border-gray-300 rounded focus:ring-2 focus:ring-secondary-500 focus:border-secondary-500"></td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+        </div>
+
+        <div class="flex justify-center">
+          <button type="button" onclick="calculate()" class="px-6 py-3 bg-primary-600 hover:bg-primary-700 text-white font-medium rounded-lg shadow-md transition duration-300 flex items-center gap-2">
+            <i class="fas fa-calculator"></i>
+            احسب المعدل
+          </button>
+        </div>
+      </form>
+
+      <!-- Results Section -->
+      <div class="bg-gray-50 p-6 border-t border-gray-200">
+        <div class="flex items-center gap-2 mb-4">
+          <div class="bg-gray-200 p-2 rounded-lg text-gray-700">
+            <i class="fas fa-chart-bar text-xl"></i>
+          </div>
+          <h3 class="text-lg font-bold text-gray-800">النتائج</h3>
+        </div>
+        
+        <div class="grid grid-cols-1 md:grid-cols-3 gap-4">
+          <div class="bg-white p-4 rounded-lg shadow-sm border border-gray-200">
+            <p class="text-gray-600 mb-1">معدل الفصل الأول</p>
+            <p class="text-2xl font-bold text-primary-600" id="sem1_result">--</p>
+          </div>
+          <div class="bg-white p-4 rounded-lg shadow-sm border border-gray-200">
+            <p class="text-gray-600 mb-1">معدل الفصل الثاني</p>
+            <p class="text-2xl font-bold text-secondary-600" id="sem2_result">--</p>
+          </div>
+          <div class="bg-white p-4 rounded-lg shadow-sm border border-gray-200 bg-gradient-to-r from-primary-50 to-secondary-50">
+            <p class="text-gray-600 mb-1">المعدل السنوي</p>
+            <p class="text-3xl font-bold text-gray-800" id="final_result">--</p>
+          </div>
+        </div>
+      </div>
+    </main>
+  </div>
+
+  <script>
+    function calculate() {
+      const form = document.forms['gradesForm'];
+
+      // Sem 1 Coefs
+      const sem1_subjects = ['archi', 'oop', 'file', 'algebra', 'analysis', 'algo', 'proba'];
+      const sem1_coefs = {
+        archi: 5, oop: 5, file: 5, algebra: 4,
+        analysis: 4, algo: 4, proba: 2, entrep: 1
+      };
+
+      let sem1_total = 0, sem1_coef_sum = 0;
+      sem1_subjects.forEach(sub => {
+        const td = parseFloat(form[sub + '_td'].value) || 0;
+        const exam = parseFloat(form[sub + '_exam'].value) || 0;
+        const grade = 0.4 * td + 0.6 * exam;
+        sem1_total += grade * sem1_coefs[sub];
+        sem1_coef_sum += sem1_coefs[sub];
+      });
+      const entrep = parseFloat(form['entrep'].value) || 0;
+      sem1_total += entrep * sem1_coefs['entrep'];
+      sem1_coef_sum += sem1_coefs['entrep'];
+      const sem1_avg = sem1_total / sem1_coef_sum;
+
+      // Sem 2 Coefs
+      const sem2_coefs = {
+        english: 1, oop2: 6, infosys: 3, net: 4,
+        db: 3, lt: 3, gt: 3, project: 6
+      };
+
+      let sem2_total = 0, sem2_coef_sum = 0;
+
+      // Subjects with TD+Exam
+      const tdExamSubs = ['oop2', 'infosys', 'net', 'db', 'lt', 'gt'];
+      tdExamSubs.forEach(sub => {
+        const td = parseFloat(form[sub + '_td'].value) || 0;
+        const exam = parseFloat(form[sub + '_exam'].value) || 0;
+        const grade = 0.4 * td + 0.6 * exam;
+        sem2_total += grade * sem2_coefs[sub];
+        sem2_coef_sum += sem2_coefs[sub];
+      });
+
+      // Subjects with one exam note only
+      const english = parseFloat(form['english'].value) || 0;
+      const project = parseFloat(form['project'].value) || 0;
+      sem2_total += english * sem2_coefs['english'];
+      sem2_coef_sum += sem2_coefs['english'];
+      sem2_total += project * sem2_coefs['project'];
+      sem2_coef_sum += sem2_coefs['project'];
+
+      const sem2_avg = sem2_total / sem2_coef_sum;
+
+      // Final yearly average
+      const final_avg = (sem1_avg + sem2_avg) / 2;
+
+      // Update UI with results
+      document.getElementById('sem1_result').innerText = sem1_avg.toFixed(2);
+      document.getElementById('sem2_result').innerText = sem2_avg.toFixed(2);
+      document.getElementById('final_result').innerText = final_avg.toFixed(2);
+
+      // Add animation to results
+      const resultElements = [
+        document.getElementById('sem1_result'),
+        document.getElementById('sem2_result'),
+        document.getElementById('final_result')
+      ];
+      
+      resultElements.forEach(el => {
+        el.classList.add('animate-pulse');
+        setTimeout(() => {
+          el.classList.remove('animate-pulse');
+        }, 1000);
+      });
+    }
+  </script>
+</body>
+</html>
